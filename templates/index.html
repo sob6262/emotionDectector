@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        main {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        input[type="file"], textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        h2 {
+            color: #4CAF50;
+        }
+        .result {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Emotion Detection</h1>
+</header>
+
+<main>
+    <h2>Enter Text to Analyze Emotion:</h2>
+    <form action="/analyze" method="POST">
+        <textarea name="input" rows="4" cols="50" placeholder="Enter text here..."></textarea><br>
+        <button type="submit">Analyze Text</button>
+    </form>
+
+    {% if emotion %}
+    <div class="result">
+        <h3>Emotion Detected from Text:</h3>
+        <p>Emotion: {{ emotion }}</p>
+        <p>Confidence: {{ score }}</p>
+        <p>Text: "{{ input_text }}"</p>
+    </div>
+    {% endif %}
+</main>
+
+</body>
+</html>
